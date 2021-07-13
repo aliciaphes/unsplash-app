@@ -69,7 +69,11 @@ const LikeButton: React.FC<{
   );
 };
 
-const PhotoCard: React.FC<Photo> = ({ id, urls, alt_description }) => {
+const PhotoCard: React.FC<{
+  id: string;
+  urls: { regular: string; raw: string };
+  altDescription: string;
+}> = ({ id, urls, altDescription }) => {
   const [likeButtonVisible, showLikeButton] = React.useState(false);
   const [overlayVisible, toggleOverlay] = React.useState(false);
 
@@ -102,7 +106,7 @@ const PhotoCard: React.FC<Photo> = ({ id, urls, alt_description }) => {
         overlayVisible={overlayVisible}
       />
       {overlayVisible && <div className="overlay"></div>}
-      <img className="photoImg" src={src} key={id} alt={alt_description} />
+      <img className="photoImg" src={src} key={id} alt={altDescription} />
     </div>
   );
 };
@@ -111,9 +115,14 @@ const Gallery: React.FC<{
   photos: Photo[];
 }> = ({ photos }) => (
   <div className="gallery">
-    {photos.map((p: Photo, index: number) => (
-      <React.Fragment key={index}>{PhotoCard(p)}</React.Fragment>
-    ))}
+    {photos.map((p: Photo, index: number) => {
+      const { id, urls, alt_description } = p;
+      return (
+        <React.Fragment key={index}>
+          <PhotoCard id={id} urls={urls} altDescription={alt_description} />
+        </React.Fragment>
+      );
+    })}
   </div>
 );
 
