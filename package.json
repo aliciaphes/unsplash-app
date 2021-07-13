@@ -1,0 +1,54 @@
+{
+  "name": "unsplash-web-hiring-test",
+  "private": true,
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "tsx"
+    ],
+    "testEnvironment": "jsdom",
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "preset": "ts-jest",
+    "transform": {
+      "^.+\\.(ts|tsx)?$": "ts-jest",
+      "^.+\\.(js|jsx)$": "babel-jest"
+    }
+  },
+  "scripts": {
+    "compile": "rm -rf ./config/target/ && tsc --project config && rm -rf ./target/ && webpack --config config/target/webpack.config.js",
+    "compile:watch": "npm run compile -- --watch",
+    "start:server": "http-server -c-1 ./target/",
+    "format": "prettier --write './**/*.{html,ts,tsx,js,json,md}' '.prettierrc'",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/copy-webpack-plugin": "^5.0.0",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-redux": "^7.1.7",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/redux": "^3.6.0",
+    "@types/webpack": "^4.41.5",
+    "copy-webpack-plugin": "^5.1.1",
+    "http-server": "^0.12.1",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.1.3",
+    "react-router": "^5.1.2",
+    "redux": "^4.0.5",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "babel-jest": "^27.0.6",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.3"
+  }
+}
