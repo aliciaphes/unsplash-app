@@ -2,8 +2,7 @@
 
 ## Development
 
-```
-yarn
+```yarn
 npm run compile:watch
 npm run start:server
 ```
@@ -12,8 +11,7 @@ The server can be opened at `http://127.0.0.1:8080/`
 
 Tests can be run with:
 
-```
-yarn
+```yarn
 npm run test
 ```
 
